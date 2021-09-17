@@ -23,7 +23,7 @@ const App = () => {
       <hr />
       <Switch>
         <Route path="/" component={Home} exact={true} />
-        <Route path={['/about', 'info']} component={About} />
+        <Route path={['/about', '/info']} component={About} />
         <Route path="/profiles" component={Profiles} />
         <Route path="/history" component={History} />
         <Route render={({ location }) => 
