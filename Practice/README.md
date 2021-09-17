@@ -361,11 +361,11 @@ TodoList, TodoListItem 두개 다 React.memo를 사용
 
 실제 보이는 항목은 9개 뿐이지만 현재는 전체를 렌더링하기 때문에 비효율적이지만 react-virtuarlized를 사용하면 스크롤 되기 전에 보이지 않는 컴포넌트는 렌더링 하지 않고 크기만 차지하게끔 할 수 있습니다.
 
-###불변성의 중요성
+### 불변성의 중요성
 기존의 값을 직접 수정하지 않으면서 새로운 값을 만들어 내는 것을 불변성을 지킨다고 한다.
 불변성이 지켜지지 않으면 객체 내부의 값이 새로워져도 바뀐 것을 감지하지 못합니다.
 
-##12장 immer를 사용하여 불변성 유지
+## 12장 immer를 사용하여 불변성 유지
 immer 라이브러리를 사용하는 경우는 전개연산자와 배열내장함수로 불변성을 유지하는게 가독성이 떨어질때 사용가능하다.
 
 ```
@@ -377,7 +377,7 @@ draft.somewhere.deep.inside = 5;
 
 produce라는 함수에 첫번째 파라미터는 수정하고 싶은 상태이고 두 번째 파라미터는 상태를 어떻게 업데이트할지 정의하는 함수 이다.
 
-##13장 리액트 라우터로 SPA 개발하기
+## 13장 리액트 라우터로 SPA 개발하기
 
 ### SPA란
 
@@ -412,7 +412,7 @@ import {Route, Link} from 'react-route-dom';
 
 <Link to='주소'>내용</Link>
 
-###Route 하나에 여러개 path 설정하기
+### Route 하나에 여러개 path 설정하기
 <Route path={['/','/home']} component ={Home} />
 
 ###URL에 파라미터와 쿼리
@@ -454,7 +454,7 @@ App.js
  <Route path="/profile/:username" component={Profile} />
 ```
 
-####URL 쿼리
+#### URL 쿼리
 쿼리 사용시 주의 사항 결과값은 언제나 문자열로 숫자를 받아야한다면 parseInt로 숫자로 변환해주고 논리 자료형일때도 'true'로 문자열이랑 일치하는지 비교해주세요
 
 yarn add qs
@@ -475,7 +475,7 @@ onst query = qs.parse(location.search, {
 
 /home?detail=true 으로 확인
 
-###서브 라우트
+### 서브 라우트
 서브 라우트는 라우트 내부에 또 라우트를 정의하는 것입니다.
 profiles.js
 
@@ -494,8 +494,8 @@ App.js
 <Route path="/profiles" component={Profiles} />
 ```
 
-###리액트 라우터 부가기능
-####history
+### 리액트 라우터 부가기능
+#### history
 history 객체는 라우트로 사용된 컴포넌트에 match, location과 함께 전달되는 props중 하나로 이 객체를 통해 컴포넌트 내에 구현하는 메서드에서 라우터 API를 호출할 수 있습니다.
 
 HistorySample.js
@@ -537,7 +537,7 @@ class HistorySample extends Component {
 
 ```
 
-####withRouter
+#### withRouter
 withRouter 함수는 Hoc(Higher-order-Component)입니다. 라우트로 사용된 컴포넌트가 아니어도 match, location, history객체를 접근할 수 있게 해줍니다.
 
 withRouter.js
@@ -604,7 +604,7 @@ Switch컴포넌트는 여러 Route를 감싸서 그중 일치하는 단 하나�
       </Switch>
 ```
 
-####NavLink
+#### NavLink
 NavLink는 현재 경로와 Link에서 사용하는 경로가 일치하는 경우 특정 스타일 혹인 CSS클래스를 적용할 수 있는 컴포넌트 입니다.
 
 ```
