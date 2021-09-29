@@ -65,6 +65,7 @@
         or연산자를 사용하면 underfined를 대신 보여줄 문구나 코드를 작성할 수 있다.
         {naem || 'true'}
 
+```
 ### 인라인 스타일링은 "-"을 빼고 카멜케이스로 작성해야한다
 
     background-color => backgroundColor
@@ -298,59 +299,64 @@ useState의 함수형 업데이트기능을 사용하거나 useReducer를 사용
 기존코드
 
 ```
-   const onRemove = useCallback(
-    (id) => {
-      setTodos(todos.filter((todo) => todo.id !== id));
-    },
-    [todos],
-  );
+
+const onRemove = useCallback(
+(id) => {
+setTodos(todos.filter((todo) => todo.id !== id));
+},
+[todos],
+);
 
 ```
 
 변경된 코드
 
 ```
-  const onRemove = useCallback(
-  (id) => {
-    setTodos((todos)=> todos.filter((todo) => todo.id !== id));  <------ setTodos( todos => ... 여기가 변경
-  }, []);
+
+const onRemove = useCallback(
+(id) => {
+setTodos((todos)=> todos.filter((todo) => todo.id !== id)); <------ setTodos( todos => ... 여기가 변경
+}, []);
+
 ```
 
 2. useReducer 사용하기
    아래와 같이 변경
 
 ```
+
 function todoReducer(todos, action) {
-  switch (action.type) {
-    case 'INSERT':
-      return todos.concat(action.todo);
-    case 'DELETE':
-      return todos.filter((todo) => todo.id !== action.id);
-    case 'TOGGLE':
-      return todos.map((todo) =>
-        todo.id === action.id ? { ...todo, checked: !todo.checked } : todo,
-      );
-    default:
-      return todos;
-  }
+switch (action.type) {
+case 'INSERT':
+return todos.concat(action.todo);
+case 'DELETE':
+return todos.filter((todo) => todo.id !== action.id);
+case 'TOGGLE':
+return todos.map((todo) =>
+todo.id === action.id ? { ...todo, checked: !todo.checked } : todo,
+);
+default:
+return todos;
+}
 }
 const [todos, dispatch] = useReducer(todoReducer, undefined, createBulkTodos);
 const onInsert = useCallback((text) => {
-    const todo = {
-      id: nextId.current,
-      text,
-      checked: false,
-    };
-    dispatch({ type: 'INSERT', todo });
-    nextId.current += 1;
-  }, []);
+const todo = {
+id: nextId.current,
+text,
+checked: false,
+};
+dispatch({ type: 'INSERT', todo });
+nextId.current += 1;
+}, []);
 
-  const onRemove = useCallback((id) => {
-    dispatch({ type: 'DELETE', id });
-  }, []);
-  const onToggle = useCallback((id) => {
-    dispatch({ type: 'TOGGLE', id });
-  }, []);
+const onRemove = useCallback((id) => {
+dispatch({ type: 'DELETE', id });
+}, []);
+const onToggle = useCallback((id) => {
+dispatch({ type: 'TOGGLE', id });
+}, []);
+
 ```
 
 ### 리스트 관련 컴포넌트 최적화할땐 리스트 내부에서 사용하는 컴포넌트도 최적화하고 리스트로 사용되는 컴포넌트자체도 최적화해야한다.
@@ -369,10 +375,12 @@ TodoList, TodoListItem 두개 다 React.memo를 사용
 immer 라이브러리를 사용하는 경우는 전개연산자와 배열내장함수로 불변성을 유지하는게 가독성이 떨어질때 사용가능하다.
 
 ```
+
 import produce from 'immer';
 const nextState = produce(originalState, draft => {
 draft.somewhere.deep.inside = 5;
 }
+
 ```
 
 produce라는 함수에 첫번째 파라미터는 수정하고 싶은 상태이고 두 번째 파라미터는 상태를 어떻게 업데이트할지 정의하는 함수 이다.
@@ -395,6 +403,7 @@ SPA의 단점은 앱의 규모가 커지면 페이지 로딩 시 사용자가 �
 컴포넌트에 import하고 <Route path='/' component='컴포넌트명'/> 사용
 
 ```
+
 <Route path="/" component={Home}/>
 <Route path="/profiles" component={Profiles} />
 /profiles 로 들어가면 두 컴포넌트가 보인다
@@ -413,6 +422,7 @@ import {Route, Link} from 'react-route-dom';
 <Link to='주소'>내용</Link>
 
 ### Route 하나에 여러개 path 설정하기
+
 <Route path={['/','/home']} component ={Home} />
 
 ###URL에 파라미터와 쿼리
@@ -455,6 +465,7 @@ App.js
 ```
 
 #### URL 쿼리
+
 쿼리 사용시 주의 사항 결과값은 언제나 문자열로 숫자를 받아야한다면 parseInt로 숫자로 변환해주고 논리 자료형일때도 'true'로 문자열이랑 일치하는지 비교해주세요
 
 yarn add qs
@@ -476,6 +487,7 @@ onst query = qs.parse(location.search, {
 /home?detail=true 으로 확인
 
 ### 서브 라우트
+
 서브 라우트는 라우트 내부에 또 라우트를 정의하는 것입니다.
 profiles.js
 
@@ -495,7 +507,9 @@ App.js
 ```
 
 ### 리액트 라우터 부가기능
+
 #### history
+
 history 객체는 라우트로 사용된 컴포넌트에 match, location과 함께 전달되는 props중 하나로 이 객체를 통해 컴포넌트 내에 구현하는 메서드에서 라우터 API를 호출할 수 있습니다.
 
 HistorySample.js
@@ -538,6 +552,7 @@ class HistorySample extends Component {
 ```
 
 #### withRouter
+
 withRouter 함수는 Hoc(Higher-order-Component)입니다. 라우트로 사용된 컴포넌트가 아니어도 match, location, history객체를 접근할 수 있게 해줍니다.
 
 withRouter.js
@@ -605,6 +620,7 @@ Switch컴포넌트는 여러 Route를 감싸서 그중 일치하는 단 하나�
 ```
 
 #### NavLink
+
 NavLink는 현재 경로와 Link에서 사용하는 경로가 일치하는 경우 특정 스타일 혹인 CSS클래스를 적용할 수 있는 컴포넌트 입니다.
 
 ```
@@ -616,3 +632,26 @@ const Profiles = () => {
  (...)
     <NavLink activeStyle={activeStyle} to="/profiles/velopert">velopert</NavLink>
 ```
+
+## 14장 뉴스api 사용하기
+
+### 비동기 작업
+
+서버쪽 데이터가 필요 할때 Ajax 기법을 이용하여 서버의 API를 호출하여 데이터를 수신하는데 네트워크 송수신 과정에서 시간이 걸리므로 비 동기로 처리 한다.
+동기적으로 처리하면 작업 하나가 끝날 때까지 기다려야하므로 비효율적이다.
+
+#### 콜백 함수
+
+Promise를 활용해 콜백지옥을 방지한다.
+async/await는 Promise를 더욱 쉽게 사용할 수 있게 해 준다.
+
+#### axios로 api 호출하기
+
+http요청을 Promise 기반으로 처리 한다.
+axios.get(
+`https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=apikey`,
+);
+
+### 개발시 주의 사항
+
+useEffect에 등록하는 함수는 async로 작성하면 안 된다. 그 대신 함수 내부에 async 함수를 따로 만들어 주어야 한다.
