@@ -1,20 +1,27 @@
+function solution(answers) {
+  var human1 = [1, 2, 3, 4, 5];
+  var human2 = [2, 1, 2, 3, 2, 4, 2, 5];
+  var human3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
 
-function solution(participant, completion) {
-  return participant.map(el => el != completion.includes(participant))
+  var answer = [];
+  var arrAnswer = [0, 0, 0];
+  for (var i = 0; i < answers.length; i++) {
+    if (human1[i % human1.length] == answers[i]) {
+      arrAnswer[0] += 1;
+    }
+    if (human2[i % human2.length] == answers[i]) {
+      arrAnswer[1] += 1;
+    }
+    if (human3[i % human3.length] == answers[i]) {
+      arrAnswer[2] += 1;
+    }
+  }
+
+  for (i = 0; i < 3; i++) {
+    if (Math.max.apply(null, arrAnswer) == arrAnswer[i]) {
+      answer.push(i + 1);
+    }
+  }
+
+  return answer;
 }
-var participant = ['mislav', 'stanko', 'mislav', 'ana']; 
-var completion = ['stanko', 'ana', 'mislav'];
-
-// var participant = ['marina', 'josipa', 'nikola', 'vinko', 'filipa'];
-// var completion = ['josipa', 'filipa', 'marina', 'nikola'];
-
-console.log(solution(participant, completion));
-
-// const ar1 = [1, 2, 3,2];
-// const ar2 = [3, 2];
-// ar1.sort()
-// ar2.sort()
-// var arr = ar1.concat(ar2)
-// const find = ar1.find(el => el != ar2)
-
-// console.log(find);
