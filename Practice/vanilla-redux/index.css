@@ -9,3 +9,7 @@
 .toggle.active {
   background: yellow;
 }
+
+ul p {
+  color: red;
+}

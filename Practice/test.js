@@ -1,24 +1,25 @@
-function solution(arr1, arr2) {
-var answer = new Array(arr1.length)
-for(var i = 0; i < answer.length; i++) {
-  answer[i] = new Array(arr1[0].length)
-}
+class Song {
+  name;
+  nextSong;
 
-  for (var i = 0; i < arr1.length; i++) {
-    for (var j = 0; j < arr1[0].length; j++) {
-      answer[i][j] = arr1[i][j] + arr2[i][j];
-    }
+  constructor(name) {
+    this.name = name;
   }
-  return answer;
+
+  /**
+   * @return {boolean} true if the playlist is repeating, false if not.
+   */
+  isRepeatingPlaylist() {
+    // Your code goes here
+
+    if (this.nextSong.nextSong.name === this.name) return true;
+  }
 }
 
-arr1 = [
-  [1, 2],
-  [2, 3],
-];
-arr2 = [
-  [3, 4],
-  [5, 6],
-];
+let first = new Song('Hello');
+let second = new Song('Eye of the tiger');
 
-solution(arr1, arr2);
+first.nextSong = second;
+second.nextSong = first;
+
+console.log(first.isRepeatingPlaylist());
