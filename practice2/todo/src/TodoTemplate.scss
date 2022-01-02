@@ -1,0 +1,25 @@
+.TodoTemplate {
+  width: 512px;
+  margin-left: auto;
+  margin-right: auto; //auto로 양 옆 부분 자동 할당으로 가운데 정렬 width를 줘야 함
+  margin-top: 6rem;
+
+  border-radius: 5px; //모서리 부분 깍기
+  overflow: hidden; // app-name의 배경이 넘치는 걸 막아줌
+
+  .app-Name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 4rem;
+
+    color: white;
+    background: skyblue;
+
+    font-size: 2rem;
+  }
+  .content {
+    background: white;
+  }
+}
