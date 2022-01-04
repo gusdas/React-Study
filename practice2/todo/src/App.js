@@ -4,15 +4,11 @@ import TodoList from './TodoList';
 
 function App() {
   return (
-    <div className="template">
-      {/* <TodoTemplate>
+    <div>
+      <TodoTemplate>
         <TodoInsert />
         <TodoList />
-      </TodoTemplate> */}
-
-      <div className="border"></div>
-      <div className="outline"></div>
-      <div className="both"></div>
+      </TodoTemplate>
     </div>
   );
 }

@@ -1,13 +1,13 @@
 .insertTemplate {
   display: flex;
-  height: 2rem;
+  background: #333333;
   .insert {
     flex: 1;
-    background: black;
+    background: none;
     color: white;
     font-size: 1.5rem;
     line-height: 1.2rem;
-
+    padding: 0.5rem;
     border: none;
 
     &::placeholder {
@@ -19,47 +19,15 @@
     justify-content: center;
     align-items: center;
 
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     font-size: 1.5rem;
     background: gray;
     color: white;
-
+    transition: 0.2s background ease-in;
     &:hover {
       //버튼에 마우스가 올라 갔을 때
       background: darkgray;
     }
   }
-}
-
-.template {
-  display: flex;
-  margin-top: 1rem;
-
-  margin-left: 1rem;
-}
-.border {
-  width: 200px;
-  height: 200px;
-  background: black;
-  border: 3px solid red;
-
-  margin-right: 5rem;
-}
-
-.outline {
-  width: 200px;
-  height: 200px;
-  background: black;
-  outline: 3px solid blue;
-
-  margin-right: 5rem;
-}
-
-.both {
-  width: 200px;
-  height: 200px;
-  background: black;
-  border: 3px solid red;
-  outline: 3px solid blue;
 }
