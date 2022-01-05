@@ -5,6 +5,9 @@
   padding-bottom: 1rem;
 
   align-items: center;
+  &:nth-child(even) {
+    background: #f8f9fa;
+  }
   .checkbox {
     display: flex;
     flex: 1;
@@ -13,6 +16,7 @@
     &.checked {
       svg {
         color: skyblue;
+        font-size: 1.5rem;
       }
       .text {
         color: gray;
@@ -25,10 +29,18 @@
       //   decoration: none;
       margin-left: 0.5rem;
     }
+    svg {
+      font-size: 1.5rem;
+    }
   }
 
   .deleteBtn {
     color: red;
     margin-right: 1rem;
+    font-size: 1.5rem;
+    &:hover {
+      color: pink;
+      transition: 0.1s color ease-in;
+    }
   }
 }

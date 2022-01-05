@@ -2,13 +2,16 @@ import TodoInsert from './TodoInsert';
 import TodoTemplate from './TodoTemplate';
 import TodoList from './TodoList';
 
+import Test from './test';
 function App() {
   return (
     <div>
-      <TodoTemplate>
+      {/* <TodoTemplate>
+      
         <TodoInsert />
         <TodoList />
-      </TodoTemplate>
+      </TodoTemplate> */}
+      <Test />
     </div>
   );
 }

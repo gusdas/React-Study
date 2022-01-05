@@ -22,7 +22,6 @@ const TodoListItem = ({ todo, onRemove, onToggle }) => {
           <MdRemoveCircleOutline />
         </div>
       </div>
-      <div className={cn('link')}>link</div>
     </>
   );
 };
