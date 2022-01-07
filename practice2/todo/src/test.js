@@ -2,13 +2,20 @@ import './test.scss';
 
 const test = () => {
   return (
-    <div>
-      <p> red</p>
-      <p> red</p>
+    <>
+      <p>P</p>
+      <span>
+        span
+        <p>P</p>
+      </span>
+      <p>P</p>
+
       <div>
-        <p> black</p>
+        <span>서로 </span>
+        <div>떨어지면</div>
+        <p>적용 안됌</p>
       </div>
-    </div>
+    </>
   );
 };
 

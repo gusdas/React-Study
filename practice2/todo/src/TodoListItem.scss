@@ -33,7 +33,9 @@
       font-size: 1.5rem;
     }
   }
-
+  & + & {
+    border-top: 1px solid gray;
+  }
   .deleteBtn {
     color: red;
     margin-right: 1rem;
