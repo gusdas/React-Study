@@ -1,22 +1,32 @@
 import './test.scss';
+import React, { useReducer } from 'react';
 
-const test = () => {
+function reducer(state, action) {
+  return { state, [action.name]: action.value };
+}
+const Test = () => {
+  const [state, dispatch] = useReducer(reducer, {
+    name: '',
+    nickname: '',
+  });
+  const { name, nickname } = state;
+  const onChange = (e) => {
+    console.log(e.target.value);
+    dispatch(e.target);
+  };
   return (
-    <>
-      <p>P</p>
-      <span>
-        span
-        <p>P</p>
-      </span>
-      <p>P</p>
+    <div>
+      {/* <p>카운터{state.value}</p>
+      <button onClick={() => dispatch({ type: 'INCREMENT' })}>+1</button>
+      <button onClick={() => dispatch({ type: 'DECREMENT' })}>-1</button> */}
 
-      <div>
-        <span>서로 </span>
-        <div>떨어지면</div>
-        <p>적용 안됌</p>
-      </div>
-    </>
+      <input name="name" value={name} onChange={onChange}></input>
+      <input name="nickname" value={nickname} onChange={onChange}></input>
+
+      <div>이름:{name}</div>
+      <div>nick이름:{nickname}</div>
+    </div>
   );
 };
 
-export default test;
+export default Test;
