@@ -14,7 +14,7 @@ const TodoInsert = ({ onInsert }) => {
       setText('');
     },
     [onInsert, text]
-    //왜 useCallbck 쓸까?
+    //왜 useCallbck 쓸까? 리렌더링 될때 함수가 재생성 되는걸 막기 위해인데 그러면 다 쓰면 되잖아?
   );
   return (
     <form className="insertTemplate" onSubmit={onSubmit}>
