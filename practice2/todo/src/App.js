@@ -15,12 +15,26 @@ function App() {
     { text: '일정관리 앱 만들어보기', checked: true, id: 3 },
   ]);
   const nextId = useRef(4);
+  const onInsert = useCallback(
+    (text) => {
+      const todo = [{ text, checked: false, id: nextId.current }];
+      setTodos(todos.concat(todo));
+      nextId.current += 1;
+    },
+    [todos]
+  );
 
+  const onDelete = useCallback(
+    (id) => {
+      setTodos(todos.filter(todos.id !== id));
+    },
+    [todos]
+  );
   return (
     <div>
       <TodoTemplate>
-        <TodoInsert />
-        <TodoList todos={todos} />
+        <TodoInsert onInsert={onInsert} />
+        <TodoList todos={todos} onDelete={onDelete} />
       </TodoTemplate>
       {/* <Test /> */}
     </div>
