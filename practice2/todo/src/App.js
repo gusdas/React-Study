@@ -7,14 +7,12 @@ import TodoList from './TodoList';
 function App() {
   const [todos, setTodos] = useState([
     {
-      text: '리액트의 기초 알아보기',
+      text: '',
       checked: false,
-      id: 1,
+      id: 0,
     },
-    { text: '컴포넌트 스타일링하기', checked: false, id: 2 },
-    { text: '일정관리 앱 만들어보기', checked: true, id: 3 },
   ]);
-  const nextId = useRef(4);
+  const nextId = useRef(1);
   const onInsert = useCallback(
     (text) => {
       const todo = [{ text, checked: false, id: nextId.current }];
@@ -27,7 +25,6 @@ function App() {
   const onDelete = useCallback(
     (id) => {
       setTodos(todos.filter((todo) => todo.id !== id));
-      console.log(id);
     },
     [todos]
   );
