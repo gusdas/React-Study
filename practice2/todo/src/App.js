@@ -3,20 +3,21 @@ import TodoInsert from './TodoInsert';
 import TodoTemplate from './TodoTemplate';
 import TodoList from './TodoList';
 
+const createBulkTodos = () => {
+  const array = [];
+  for (let i = 0; i < 2500; i++) {
+    array.push({ id: i, text: `할 일 ${i}`, checked: false });
+  }
+  return array;
+};
 // import Test from './test';
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      text: '',
-      checked: false,
-      id: 0,
-    },
-  ]);
-  const nextId = useRef(1);
+  const [todos, setTodos] = useState(createBulkTodos);
+  const nextId = useRef(2501);
   const onInsert = useCallback(
     (text) => {
       const todo = [{ text, checked: false, id: nextId.current }];
-      setTodos(todos.concat(todo));
+      setTodos((todos) => todos.concat(todo));
       nextId.current += 1;
     },
     [todos]
@@ -32,7 +33,6 @@ function App() {
         todo.id === id ? { ...todo, checked: !todo.checked } : todo
       )
     );
-    console.log(id);
   }, []);
   return (
     <div>

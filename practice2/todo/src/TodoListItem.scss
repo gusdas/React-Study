@@ -5,7 +5,7 @@
   padding-bottom: 1rem;
 
   align-items: center;
-  &:nth-child(odd) {
+  &:nth-child(even) {
     background: #f8f9fa;
   }
   .checkbox {
