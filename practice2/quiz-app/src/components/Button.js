@@ -16,7 +16,6 @@ const Button = ({ text }) => {
     }
   `;
 
-  const onClick = () => {};
   return (
     <>
       <Button to="/">

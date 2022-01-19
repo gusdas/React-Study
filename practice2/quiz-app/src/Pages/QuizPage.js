@@ -7,8 +7,8 @@ const QuizPage = () => {
     /* justify-content: center; */
     align-items: center;
   `;
-  const Title = styled.div`
-    margin: 5rem;
+  const Question = styled.div`
+    margin: 4rem;
     font-size: 3rem;
     font-family: NotoSans;
     overflow-y: auto;
@@ -16,6 +16,10 @@ const QuizPage = () => {
     min-width: 10rem;
     cursor: default;
     background: rgb(240, 232, 194, 0.5);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   `;
   const Wrapper = styled.div`
     display: flex;
@@ -29,20 +33,21 @@ const QuizPage = () => {
     font-size: 1.5rem;
     height: 6rem;
     width: 20rem;
-    border: 1px solid red;
+    border-radius: 10px;
     margin: 2rem;
-    padding: 0.5rem;
+    overflow-y: auto;
+    background: #c4e0b4;
   `;
   return (
     <>
       <StartTemplate>
-        <Title>
+        <Question>
           In the Harry In the Harry Potter universe, who does Draco Malfoy end
           up marrying?
-        </Title>
+        </Question>
 
         <Wrapper>
-          <Button>Millicent Bulstrode Astoria Greengrass</Button>
+          <Button>Routing Information Protocol</Button>
           <Button>Hermione Granger</Button>
         </Wrapper>
         <Wrapper>

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
+import axios from 'axios';
 const StartPage = () => {
   const Template = styled.div`
     display: flex;
@@ -27,7 +29,9 @@ const StartPage = () => {
       cursor: pointer;
     }
   `;
-
+  // const onClick = () => {
+  //   onSetData();
+  // };
   return (
     <>
       <Template>
