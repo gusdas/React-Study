@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
-import apiReducer from './ApiReducer';
-import quizReducer from './QuizReducer';
-
+// import apiReducer from './ApiReducer';
+// import quizReducer from './QuizReducer';
+import sample from './sample';
 const rootReducer = combineReducers({
-  apiReducer,
-  quizReducer,
+  sample,
 });
 
 export default rootReducer;

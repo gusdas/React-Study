@@ -1,31 +1,51 @@
-//액션타입 정의
-const ADD_DATA = 'api/ADDDATA';
-const DATA_STATUS = 'api/DATA_STATUS';
+// import { createAction, handleActions } from 'redux-actions';
+// import { call, put, takeLatest } from 'redux-saga/effects';
+// import * as api from '../api';
+// import { startLoading, finishLoading } from './loading';
+// //액션타입 정의
+// const GET_QUIZZES = 'api/GET_QUIZZES';
+// const GET_QUIZZES_SUCCESS = 'api/GET_QUIZZES_SUCCESS';
+// const GET_QUIZZES_FAIL = 'api/GET_QUIZZES_FAIL';
 
-const ADD_NUM = 'api/ADD_NUM';
-//액션객체 만드는 함수 정의
-export const addData = (data) => ({ type: ADD_DATA, data });
+// //액션객체 만드는 함수 정의
+// export const getQuizzes = createAction(GET_QUIZZES);
 
-export const setDataStatus = (status) => ({ type: DATA_STATUS, status });
+// function* getQuizzesSaga(action) {
+//   yield put(startLoading(GET_QUIZZES));
+//   try {
+//     const quiz = yield call(api.getQuizzes, action.payload);
+//     yield put({ type: GET_QUIZZES_SUCCESS, payload: quiz.data });
+//   } catch (e) {
+//     yield put({ type: GET_QUIZZES_FAIL, payload: e, error: true });
+//   }
+//   yield put(finishLoading(GET_QUIZZES));
+// }
+// export function* sampleSaga() {
+//   yield takeLatest(GET_QUIZZES, getQuizzesSaga);
+// }
 
-export const addNum = () => ({ type: ADD_NUM });
+// //state 기본값
+// const initialState = {
+//   quizzes: null,
+// };
 
-//state 기본값
-const initialState = {
-  status: '',
-  data: [],
-  num: 0,
-};
+// const quizzes = (state = initialState, action) => {
+//   switch (action.type) {
+//     case GET_QUIZZES_SUCCESS:
+//       return { ...state, quizzes: action.quizzes };
+//     case GET_QUIZZES_FAIL:
+//       return { ...state, error: action.error };
 
-export default function API(state = initialState, action) {
-  switch (action.type) {
-    case ADD_DATA:
-      return { ...state, data: action.data };
-    case DATA_STATUS:
-      return { ...state, status: action.status };
-    case ADD_NUM:
-      return { ...state, num: state.num + 1 };
-    default:
-      return state;
-  }
-}
+//     default:
+//       return state;
+//   }
+// };
+
+// const apiReducer = handleActions({
+//   [GET_QUIZZES_SUCCESS]: (state, action) => ({
+//     ...state,
+//     quizzes: action.payload,
+//   }),
+//   initialState,
+// });
+// export default apiReducer;

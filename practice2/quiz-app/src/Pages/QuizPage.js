@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Result from '../components/Result';
-const QuizPage = () => {
+const QuizPage = ({ loadingQuiz, quizzes }) => {
   const StartTemplate = styled.div`
     display: flex;
     flex-direction: column;
@@ -39,25 +39,32 @@ const QuizPage = () => {
     background: #c4e0b4;
   `;
   return (
-    <>
-      <StartTemplate>
-        <Question>
-          In the Harry In the Harry Potter universe, who does Draco Malfoy end
-          up marrying?
-        </Question>
+    <div>
+      {loadingQuiz && '로딩 중...'}
 
-        <Wrapper>
-          <Button>Routing Information Protocol</Button>
-          <Button>Hermione Granger</Button>
-        </Wrapper>
-        <Wrapper>
-          <Button>Pansy Parkinson</Button>
-          <Button>Astoria Greengrass</Button>
-        </Wrapper>
-      </StartTemplate>
+      {!loadingQuiz && quizzes && (
+        <div>
+          <StartTemplate>
+            <Question>
+              In the Harry In the Harry Potter universe, who does Draco Malfoy
+              end up marrying?
+            </Question>
 
-      <Result correctCnt="1" />
-    </>
+            <Wrapper>
+              <Button>Routing Information Protocol</Button>
+              <Button>Hermione Granger</Button>
+            </Wrapper>
+            <Wrapper>
+              <Button>Pansy Parkinson</Button>
+              <Button>Astoria Greengrass</Button>
+            </Wrapper>
+          </StartTemplate>
+
+          <Result correctCnt="1" />
+          {quizzes}
+        </div>
+      )}
+    </div>
   );
 };
 
