@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { getData } from '../api';
 
 import axios from 'axios';
-const StartPage = () => {
+const StartPage = ({ onAddNum }) => {
   const Template = styled.div`
     display: flex;
     flex-direction: column;
@@ -29,14 +30,17 @@ const StartPage = () => {
       cursor: pointer;
     }
   `;
-  // const onClick = () => {
-  //   onSetData();
-  // };
+  const onClick = () => {
+    getData();
+  };
   return (
     <>
       <Template>
         <Title>상식 퀴즈</Title>
-        <Button to="/quiz">START</Button>
+        <Button onClick={onClick} to="/quiz">
+          START
+        </Button>
+        <button onClick={onAddNum}>addnum</button>
       </Template>
     </>
   );

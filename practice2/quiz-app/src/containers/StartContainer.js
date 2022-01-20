@@ -1,10 +1,18 @@
 import React, { useEffect } from 'react';
 import StartPage from '../Pages/StartPage';
-import { getQuizzes } from '../api';
+import { useSelector, useDispatch } from 'react-redux';
+import { addNum } from '../reducers/ApiReducer';
 
 const StartContainer = () => {
-  getQuizzes();
-  return <StartPage></StartPage>;
+  const { num } = useSelector((state) => ({
+    num: state.num,
+  }));
+
+  const dispatch = useDispatch();
+
+  const onAddNum = () => dispatch(addNum());
+
+  return <StartPage num={num} onAddNum={onAddNum} />;
 };
 
-export default React.memo(StartContainer);
+export default StartContainer;

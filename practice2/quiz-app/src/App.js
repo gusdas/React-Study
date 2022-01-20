@@ -9,7 +9,7 @@ import StartContainer from './containers/StartContainer';
 import { Provider } from 'react-redux';
 
 import { createStore } from 'redux';
-import rootReducer from './store/reducers/RootReducer';
+import rootReducer from './reducers/RootReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 const store = createStore(rootReducer, composeWithDevTools());
 
