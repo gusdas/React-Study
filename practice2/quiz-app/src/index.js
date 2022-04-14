@@ -17,11 +17,18 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(logger, ReduxThunk))
 );
 
+// ReactDOM.render(
+//   <BrowserRouter>
+//     <Provider store={store}>
+//       <App />
+//     </Provider>
+//   </BrowserRouter>,
+//   document.getElementById('root')
+// );
+
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );

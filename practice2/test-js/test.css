@@ -1,0 +1,16 @@
+#margin{
+    color:white;
+    width:100px;
+    height:100px;
+    background-color: red;
+    margin: 50px;
+    
+}
+#padding{
+    color:white;
+    width:100px;
+    height:100px;
+    background-color: blue;
+    padding:50px;
+    
+}

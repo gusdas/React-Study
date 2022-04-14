@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import QuizPage from '../Pages/QuizPage';
 import { getQuizzes } from '../module/sample';
-
 // const { useEffect } = React;
 
-const QuizContainer = ({ getQuizzes, quizzes, loadingQuizzes }) => {
+const QuizContainer = ({ getQuizzes }) => {
   useEffect(() => {
     const fn = async () => {
       try {
@@ -16,7 +15,8 @@ const QuizContainer = ({ getQuizzes, quizzes, loadingQuizzes }) => {
     };
     fn();
   }, [getQuizzes]);
-  return <QuizPage loadingQuizzes={loadingQuizzes} quizzes={quizzes} />;
+
+  return <QuizPage />;
 };
 
 export default connect(
